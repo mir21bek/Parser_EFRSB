@@ -13,12 +13,14 @@ from selenium.webdriver.support import expected_conditions as EC
 def web_parsing(list_fio):
 
     executor = ThreadPoolExecutor(3)
+    page_counter = 1
 
     async def scrape(debtor_url_text, *, loop):
         return await loop.run_in_executor(executor, scraper, debtor_url_text)
 
     def scraper(fio_ay):
         # options
+        nonlocal page_counter
         options = webdriver.ChromeOptions()
 
         # user-agent
@@ -71,7 +73,8 @@ def web_parsing(list_fio):
             # print(111, ex)
             return ["Ошибка", "Ошибка", "Ошибка", "Ошибка"]
         finally:
-            print("Страница скопирована")
+            print(f"{page_counter}Страница скопирована")
+            page_counter += 1
             driver.quit()
 
     async def main(debtors_url_text):
@@ -92,12 +95,14 @@ def web_parsing(list_fio):
 def web_debtor_inn(debtors_url):
 
     executor = ThreadPoolExecutor(3)
+    inn_counter = 1
 
     async def scrape(debtors_url, *, loop):
         return await loop.run_in_executor(executor, scraper, debtors_url)
 
     def scraper(debtors_url):
         # options
+        nonlocal inn_counter
         options = webdriver.ChromeOptions()
 
         # user-agent
@@ -118,7 +123,8 @@ def web_debtor_inn(debtors_url):
             # print(111, ex)
             return False
         finally:
-            print("Инн Скопирован")
+            print(f"{inn_counter} Инн Скопирован")
+            inn_counter += 1
             driver.quit()
 
     async def main(debtors_url):
