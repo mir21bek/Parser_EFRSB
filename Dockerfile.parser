@@ -1,0 +1,15 @@
+# Используем Python 3.11 как базовый образ
+FROM python:3.11-slim
+
+# Устанавливаем рабочую директорию
+WORKDIR /usr/src/app/
+
+# Копируем файлы проекта в контейнер
+COPY parserfile/ /usr/src/app/parserfile/
+
+# Копируем файл зависимостей
+COPY req.txt ./
+RUN pip install -r req.txt
+
+# Запускаем парсер
+CMD ["python", "parser_main.py"]

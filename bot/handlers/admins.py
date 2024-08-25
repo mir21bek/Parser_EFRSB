@@ -1,10 +1,11 @@
 from aiogram import Bot
 from aiogram.types import Message, FSInputFile
 
-from bot.cfg.database import Database
-from bot.keyboards import admin_kb
+from cfg.database import Database
+from keyboards import admin_kb
 
-db = Database("cfg/database.db")
+
+db = Database("bot/cfg/database.db")
 
 
 async def start_admin_task(message: Message):

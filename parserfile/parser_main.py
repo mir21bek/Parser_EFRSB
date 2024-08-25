@@ -6,7 +6,8 @@ from bot.cfg.database import Database
 from parserfile.function.parsers import web_parsing, html_parse, web_debtor_inn
 from parserfile.function.workingfile import create_file, read_file
 
-db = Database("../bot/cfg/database.db")
+db = Database("bot/cfg/database.db")
+
 
 
 def start_parser(file_id, file_name, chat_id, token_bot):

@@ -12,7 +12,8 @@ from filters.adminfilter import IsAdminFilter, IsUserFilter
 from cfg.database import Database
 
 
-db = Database("cfg/database.db")
+db = Database("bot/cfg/database.db")
+
 
 
 async def start():

@@ -1,8 +1,9 @@
 from aiogram.filters import BaseFilter
 from aiogram.types import Message
-from bot.cfg.database import Database
+from cfg.database import Database
 
-db = Database("cfg/database.db")
+
+db = Database("bot/cfg/database.db")
 
 
 class IsAdminFilter(BaseFilter):
