@@ -52,12 +52,12 @@ async def not_command_task(message: Message):
 
 
 async def parser_1_task(message: Message):
-    doc_file = FSInputFile(path=f'../parserfile/excel/example.xlsx')
+    doc_file = FSInputFile(path=f'parserfile/excel/example.xlsx')
     await message.answer_document(document=doc_file, caption="Отправь Excel файл как в примере 👆", reply_markup=admin_kb.start_reply())
 
 
 async def parser_a_1_task(message: Message):
-    doc_file = FSInputFile(path=f'../parserfile/excel/example.xlsx')
+    doc_file = FSInputFile(path=f'parserfile/excel/example.xlsx')
     await message.answer_document(document=doc_file, caption="Отправь Excel файл как в примере 👆", reply_markup=admin_kb.start_a_reply())
 
 
@@ -65,7 +65,7 @@ async def parser_2_task(message: Message, bot: Bot):
     file_id = message.document.file_id
     file = await bot.get_file(file_id)
     file_path = file.file_path
-    await bot.download_file(file_path, f"../parserfile/excel/{message.from_user.id}.xlsx")
+    await bot.download_file(file_path, f"parserfile/excel/{message.from_user.id}.xlsx")
 
     await message.answer(text="Начинается обработка и парсинг 🔄\nПарсинг одного пользователя ≈ 1мин\n\n<b>Не начинайте новый парсинг пока не завершиться этот!</b>", reply_markup=admin_kb.start_reply())
     db.add_file(message.from_user.id)
@@ -75,7 +75,7 @@ async def parser_a_2_task(message: Message, bot: Bot):
     file_id = message.document.file_id
     file = await bot.get_file(file_id)
     file_path = file.file_path
-    await bot.download_file(file_path, f"../parserfile/excel/{message.from_user.id}.xlsx")
+    await bot.download_file(file_path, f"parserfile/excel/{message.from_user.id}.xlsx")
 
     await message.answer(text="Начинается обработка и парсинг 🔄\nПарсинг одного пользователя ≈ 1мин\n\n<b>Не начинайте новый парсинг пока не завершиться этот!</b>", reply_markup=admin_kb.start_a_reply())
     db.add_file(message.from_user.id)

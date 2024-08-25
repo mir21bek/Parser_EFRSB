@@ -8,8 +8,6 @@ from parserfile.function.workingfile import create_file, read_file
 
 db = Database("bot/cfg/database.db")
 
-
-
 def start_parser(file_id, file_name, chat_id, token_bot):
     try:
         list_fio = read_file(file_name)
@@ -53,6 +51,7 @@ def start_parser(file_id, file_name, chat_id, token_bot):
 def process_files():
     while True:
         files_names = db.get_all_file()
+
         if not files_names:
             print("Нет новых файлов для обработки. Ждём...")
             time.sleep(5)
@@ -62,12 +61,12 @@ def process_files():
         for file_info in files_names:
             if file_info[2] == 0:
                 file_id = file_info[0]
-                file_name = f"excel/{file_info[1]}.xlsx"
+                file_name = f"parserfile/excel/{file_info[1]}.xlsx"
                 tasks.append((file_id, file_name, file_info[1], db.get_all_config()[1]))
 
         with multiprocessing.Pool(processes=5) as pool:
             pool.starmap(start_parser, tasks)
 
-
 if __name__ == '__main__':
+    print('Парсер успешно запущен...')
     process_files()

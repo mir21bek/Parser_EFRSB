@@ -1,4 +1,5 @@
 version: "3.8"
+
 services:
   bot_service:
     build:
@@ -6,10 +7,12 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/usr/src/app
-    command: ["python", "bot/bot_main.py"]
+    restart: always
 
   parser_service:
     build:
       context: .
       dockerfile: Dockerfile.parser
-    command: ["python", "parserfile/parser_main.py"]
+    volumes:
+      - ./parserfile/excel:/usr/src/app/parserfile/excel
+    restart: always
