@@ -4,11 +4,8 @@ FROM python:3.11-slim
 # Устанавливаем рабочую директорию
 WORKDIR /usr/src/app/
 
-# Копируем файлы проекта в контейнер
-COPY bot/ /usr/src/app/
-
 # Копируем файл базы данных
-COPY bot/cfg/database.db /usr/src/app/bot/cfg/database.db
+COPY bot/ usr/src/app/bot
 
 # Устанавливаем зависимости
 COPY req.txt ./

@@ -1,3 +1,5 @@
+import sys
+print(sys.path)
 import os
 import time
 import requests
@@ -70,3 +72,4 @@ def process_files():
 if __name__ == '__main__':
     print('Парсер успешно запущен...')
     process_files()
+    print('Все данные успешно собрано')

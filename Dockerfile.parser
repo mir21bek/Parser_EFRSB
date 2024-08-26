@@ -5,11 +5,11 @@ FROM python:3.11-slim
 WORKDIR /usr/src/app/
 
 # Копируем файлы проекта в контейнер
-COPY . /usr/src/app/
+COPY parserfile/ /usr/src/app/
 
 # Копируем файл зависимостей
 COPY req.txt ./
 RUN pip install -r req.txt
 
 # Запускаем парсер
-CMD ["python3", "-m", "parserfile.parser_main"]
+CMD ["python", "-m", "parserfile.parser_main"]

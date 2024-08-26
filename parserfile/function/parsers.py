@@ -73,7 +73,7 @@ def web_parsing(list_fio):
             # print(111, ex)
             return ["Ошибка", "Ошибка", "Ошибка", "Ошибка"]
         finally:
-            print(f"{page_counter}Страница скопирована")
+            print(f"{page_counter}: Страница скопирована")
             page_counter += 1
             driver.quit()
 
@@ -123,7 +123,7 @@ def web_debtor_inn(debtors_url):
             # print(111, ex)
             return False
         finally:
-            print(f"{inn_counter} Инн Скопирован")
+            print(f"{inn_counter}: Инн Скопирован")
             inn_counter += 1
             driver.quit()
 
