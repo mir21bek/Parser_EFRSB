@@ -19,7 +19,7 @@ def web_parsing(list_fio):
 
     def scraper(fio_ay):
         # options
-        options = webdriver.FirefoxOptions()
+        options = webdriver.ChromeOptions()
 
         # user-agent
         options.add_argument("user-agent=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:84.0) Gecko/20100101 Firefox/84.0")
@@ -27,7 +27,7 @@ def web_parsing(list_fio):
         options.add_argument("--headless")
         # options.page_load_strategy = 'none'
 
-        driver = webdriver.Firefox(options=options)
+        driver = webdriver.Chrome(options=options)
 
         url = "https://old.bankrot.fedresurs.ru/ArbitrManagersList.aspx"
         try:
