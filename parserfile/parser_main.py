@@ -1,5 +1,4 @@
 import sys
-print(sys.path)
 import os
 import time
 import requests
@@ -7,6 +6,8 @@ import multiprocessing
 from bot.cfg.database import Database
 from parserfile.function.parsers import web_parsing, html_parse, web_debtor_inn
 from parserfile.function.workingfile import create_file, read_file
+
+print(sys.path)
 
 db = Database("bot/cfg/database.db")
 
@@ -69,7 +70,10 @@ def process_files():
         with multiprocessing.Pool(processes=5) as pool:
             pool.starmap(start_parser, tasks)
 
+        # Сообщение о завершении обработки файлов
+        if tasks:
+            print('Все данные успешно собраны')
+
 if __name__ == '__main__':
     print('Парсер успешно запущен...')
     process_files()
-    print('Все данные успешно собрано')
